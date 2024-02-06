@@ -2,9 +2,9 @@
 // @name                  Youtube AD Skiper
 // @name:zh-tw            Youtube 跳過廣告
 // @namespace             iris536756
-// @version               1.0.4
-// @description           Automatically skips YouTube ads for uninterrupted video viewing.
-// @description:zh-tw     自動跳過 YouTube 廣告，實現不間斷的影片觀看。
+// @version               1.0.5
+// @description           Automatically skips YouTube ads.
+// @description:zh-tw     自動跳過 YouTube 廣告。
 // @author                Iris.L
 // @license               MIT
 // @match                 *://www.youtube.com/*
@@ -16,10 +16,12 @@
 const AD_CHECK_INTERVAL = 1000; // 1s
 
 function isAdExist() {
-  return !!document.querySelector('.ytp-ad-button-icon');
+  return !!(document.querySelector('.ytp-ad-button-icon') ||
+    // ad banner
+    document.querySelector('#masthead-ad .ytd-rich-grid-renderer:not(.dismissed)'));
 }
 
-function tryClickSkipButton() {
+function clickSkipButtonIfExist() {
   const adSkipBtn = document.querySelector('.ytp-ad-skip-button-modern');
   if (adSkipBtn) adSkipBtn.click();
   return !!adSkipBtn;
@@ -30,12 +32,18 @@ function skipTimedAd() {
   if (videoElement) videoElement.currentTime = videoElement.duration;
 }
 
+function closeAdBanner() {
+  const dismissButton = document.getElementById('dismiss-button');
+  if (dismissButton) dismissButton.click();
+}
+
 function main() {
   try {
     // Check if currently showing ad
     if (isAdExist()) {
       skipTimedAd();
-      tryClickSkipButton();
+      clickSkipButtonIfExist();
+	  closeAdBanner();
     }
   } catch (error) {
     console.error('An error occurred in main:', error);
