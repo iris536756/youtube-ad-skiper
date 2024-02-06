@@ -9,8 +9,8 @@
 // @license               MIT
 // @match                 *://www.youtube.com/*
 // @grant                 none
-// @updateURL             https://raw.githubusercontent.com/iris536756/youtube-ad-skiper/master/youtube_ad_skip.user.js
-// @downloadURL           https://raw.githubusercontent.com/iris536756/youtube-ad-skiper/master/youtube_ad_skip.user.js
+// @updateURL             https://raw.githubusercontent.com/iris536756/youtube-ad-skiper/master/youtube_ad_skiper.user.js
+// @downloadURL           https://raw.githubusercontent.com/iris536756/youtube-ad-skiper/master/youtube_ad_skiper.user.js
 // ==/UserScript==
 
 const AD_CHECK_INTERVAL = 1000; // 1s
