@@ -2,7 +2,7 @@
 // @name                  Youtube AD Skiper
 // @name:zh-tw            Youtube 跳過廣告
 // @namespace             iris536756
-// @version               1.0.3
+// @version               1.0.4
 // @description           Automatically skips YouTube ads for uninterrupted video viewing.
 // @description:zh-tw     自動跳過 YouTube 廣告，實現不間斷的影片觀看。
 // @author                Iris.L
@@ -20,7 +20,7 @@ function isAdExist() {
 }
 
 function tryClickSkipButton() {
-  let adSkipBtn = document.querySelector('.ytp-ad-skip-button-modern');
+  const adSkipBtn = document.querySelector('.ytp-ad-skip-button-modern');
   if (adSkipBtn) adSkipBtn.click();
   return !!adSkipBtn;
 }
